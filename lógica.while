@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+class SumaNaturales {
+    private int numero;
+
+    // Constructor
+    public SumaNaturales(int numero) {
+        this.numero = numero;
+    }
+
+    // Método para calcular la suma de los primeros números naturales
+    public int calcularSuma() {
+        int resultado = 0;
+        for (int control = 0; control <= numero; control++) {
+            resultado += control;
+        }
+        return resultado;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            System.out.print("Ingresar el número que desea calcular: ");
+            int numeroEntrada = Integer.parseInt(reader.readLine());
+
+            // Crear un objeto SumaNaturales
+            SumaNaturales sumaNaturales = new SumaNaturales(numeroEntrada);
+            int resultado = sumaNaturales.calcularSuma();
+
+            System.out.println("La suma de los primeros " + numeroEntrada + " naturales es igual a " + resultado);
+        } catch (IOException e) {
+            System.out.println("Error al leer la entrada: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Por favor, ingresar un número válido.");
+        }
+    }
+}
